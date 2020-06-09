@@ -31,6 +31,7 @@ Partial Class Form1
         Me.RichTextBox2 = New System.Windows.Forms.RichTextBox()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'RichTextBox1
@@ -111,11 +112,21 @@ Partial Class Form1
         Me.LinkLabel1.TabStop = True
         Me.LinkLabel1.Text = "v4gugsP"
         '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(237, 418)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(75, 23)
+        Me.Button3.TabIndex = 9
+        Me.Button3.Text = "Update"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(610, 462)
+        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.LinkLabel1)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.RichTextBox2)
@@ -128,7 +139,7 @@ Partial Class Form1
         Me.MaximumSize = New System.Drawing.Size(626, 501)
         Me.MinimumSize = New System.Drawing.Size(626, 501)
         Me.Name = "Form1"
-        Me.Text = "Anti MC:AT"
+        Me.Text = "AntiFilter baba bee"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -142,4 +153,5 @@ Partial Class Form1
     Friend WithEvents RichTextBox2 As RichTextBox
     Friend WithEvents Button2 As Button
     Friend WithEvents LinkLabel1 As LinkLabel
+    Friend WithEvents Button3 As Button
 End Class

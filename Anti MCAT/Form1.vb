@@ -1,4 +1,6 @@
 ﻿
+Imports Newtonsoft.Json.Linq
+
 Public Class Form1
     Private aa As String
     Private b As String
@@ -154,5 +156,11 @@ Public Class Form1
 
     Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
         Process.Start("https://discord.gg/v4gugsP")
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        UpdatePackages.Show()
+
+
     End Sub
 End Class
