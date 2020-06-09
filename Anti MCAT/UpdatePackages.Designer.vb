@@ -30,6 +30,8 @@ Partial Class UpdatePackages
         Me.FastColoredTextBox1 = New FastColoredTextBoxNS.FastColoredTextBox()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         CType(Me.FastColoredTextBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -68,6 +70,7 @@ Partial Class UpdatePackages
         Me.FastColoredTextBox1.CharWidth = 8
         Me.FastColoredTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.FastColoredTextBox1.DisabledColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(180, Byte), Integer), CType(CType(180, Byte), Integer), CType(CType(180, Byte), Integer))
+        Me.FastColoredTextBox1.Font = New System.Drawing.Font("Courier New", 9.75!)
         Me.FastColoredTextBox1.IsReplaceMode = False
         Me.FastColoredTextBox1.Location = New System.Drawing.Point(13, 238)
         Me.FastColoredTextBox1.Name = "FastColoredTextBox1"
@@ -92,15 +95,29 @@ Partial Class UpdatePackages
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(13, 222)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(79, 13)
+        Me.Label1.Size = New System.Drawing.Size(83, 13)
         Me.Label1.TabIndex = 5
-        Me.Label1.Text = "JSON Preview:"
+        Me.Label1.Text = "JSON Preview*:"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(13, 460)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(250, 13)
+        Me.Label2.TabIndex = 6
+        Me.Label2.Text = "*Preview might show results wrong due to encoding"
+        '
+        'Timer1
+        '
+        Me.Timer1.Interval = 2000
         '
         'UpdatePackages
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(374, 464)
+        Me.ClientSize = New System.Drawing.Size(374, 482)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.FastColoredTextBox1)
@@ -122,4 +139,6 @@ Partial Class UpdatePackages
     Friend WithEvents FastColoredTextBox1 As FastColoredTextBoxNS.FastColoredTextBox
     Friend WithEvents Button3 As Button
     Friend WithEvents Label1 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Timer1 As Timer
 End Class

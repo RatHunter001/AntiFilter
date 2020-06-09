@@ -32,6 +32,8 @@ Partial Class Form1
         Me.Button2 = New System.Windows.Forms.Button()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.Button5 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'RichTextBox1
@@ -57,10 +59,9 @@ Partial Class Form1
         '
         Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"Special Characters", "Russian Characters"})
         Me.ComboBox1.Location = New System.Drawing.Point(97, 420)
         Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(134, 21)
+        Me.ComboBox1.Size = New System.Drawing.Size(144, 21)
         Me.ComboBox1.TabIndex = 3
         Me.ComboBox1.Tag = "1"
         '
@@ -105,7 +106,7 @@ Partial Class Form1
         'LinkLabel1
         '
         Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.Location = New System.Drawing.Point(473, 440)
+        Me.LinkLabel1.Location = New System.Drawing.Point(549, 423)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(49, 13)
         Me.LinkLabel1.TabIndex = 8
@@ -114,18 +115,38 @@ Partial Class Form1
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(237, 418)
+        Me.Button3.Location = New System.Drawing.Point(337, 419)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(75, 23)
+        Me.Button3.Size = New System.Drawing.Size(84, 23)
         Me.Button3.TabIndex = 9
-        Me.Button3.Text = "Update"
+        Me.Button3.Text = "Get Packages"
         Me.Button3.UseVisualStyleBackColor = True
+        '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(247, 419)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(84, 23)
+        Me.Button4.TabIndex = 10
+        Me.Button4.Text = "Refresh"
+        Me.Button4.UseVisualStyleBackColor = True
+        '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(427, 419)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(84, 23)
+        Me.Button5.TabIndex = 11
+        Me.Button5.Text = "Credits"
+        Me.Button5.UseVisualStyleBackColor = True
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(610, 462)
+        Me.Controls.Add(Me.Button5)
+        Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.LinkLabel1)
         Me.Controls.Add(Me.Button2)
@@ -139,7 +160,7 @@ Partial Class Form1
         Me.MaximumSize = New System.Drawing.Size(626, 501)
         Me.MinimumSize = New System.Drawing.Size(626, 501)
         Me.Name = "Form1"
-        Me.Text = "AntiFilter baba bee"
+        Me.Text = "AntiFilter"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -154,4 +175,6 @@ Partial Class Form1
     Friend WithEvents Button2 As Button
     Friend WithEvents LinkLabel1 As LinkLabel
     Friend WithEvents Button3 As Button
+    Friend WithEvents Button4 As Button
+    Friend WithEvents Button5 As Button
 End Class

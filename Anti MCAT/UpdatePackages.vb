@@ -6,6 +6,7 @@ Public Class UpdatePackages
     Dim CurrentFolder = System.IO.Path.GetDirectoryName(Application.ExecutablePath)
     Dim selectedpackage
     Private Sub UpdatePackages_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         Dim FileCount As Integer = Integer.Parse(PHPFunctions.PHP("http://betese.dsf001.site/AntiFilter/AntiFilter.php", "POST", "Action=CountFiles"))
         Dim AllPackages As String = (PHPFunctions.PHP("http://betese.dsf001.site/AntiFilter/AntiFilter.php", "POST", "Action=DownloadPackages"))
         Dim AllPackagesList As New List(Of String)
@@ -30,20 +31,33 @@ Public Class UpdatePackages
                 MsgBox("Could not download. Here's an useless error message: " + ex.Message, vbCritical, "Error")
             End Try
         Else
-            MsgBox("bloody hell mate", vbCritical, "o o oa oa")
+            MsgBox("bloody hell mate select something", vbCritical, "o o oa oa")
         End If
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        MsgBox(CurrentFolder)
-        My.Computer.FileSystem.CreateDirectory(CurrentFolder + "\AntiFilterPackages")
-        Dim AntiFilterPackagesFolder = CurrentFolder + "\AntiFilterPackages"
+        Try
+            'MsgBox(CurrentFolder) 
+            'For test purposes
+            My.Computer.FileSystem.CreateDirectory(CurrentFolder + "\AntiFilterPackages")
+            Dim AntiFilterPackagesFolder = CurrentFolder + "\AntiFilterPackages"
 
-        Dim fs As FileStream = File.Create(AntiFilterPackagesFolder)
+            Dim fs As FileStream = File.Create(AntiFilterPackagesFolder + "\" + selectedpackage)
 
-        ' Add text to the file.
-        Dim info As Byte() = New UTF8Encoding(True).GetBytes(FastColoredTextBox1.Text)
-        fs.Write(info, 0, info.Length)
-        fs.Close()
+            ' Add text to the file.
+            Dim info As Byte() = New UTF8Encoding(True).GetBytes(FastColoredTextBox1.Text)
+            fs.Write(info, 0, info.Length)
+            fs.Close()
+            Button3.Text = "Installed!"
+            Timer1.Start()
+        Catch ex As Exception
+            MsgBox("Could not install the package. Do you have administrator rights? Here's the message: " + ex.Message, vbCritical, "Error")
+        End Try
+
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        Button3.Text = "Install"
+        Timer1.Stop()
     End Sub
 End Class

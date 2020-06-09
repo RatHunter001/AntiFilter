@@ -1,7 +1,9 @@
 ﻿
+Imports System.IO
 Imports Newtonsoft.Json.Linq
 
 Public Class Form1
+    Dim CurrentFolder = System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "\AntiFilterPackages"
     Private aa As String
     Private b As String
     Private c As String
@@ -29,59 +31,36 @@ Public Class Form1
     Private Sub RichTextBox1_TextChanged(sender As Object, e As EventArgs) Handles RichTextBox1.TextChanged
 
     End Sub
+    Private Sub TranslateText()
+        Try
+            Dim currentpackage = CurrentFolder + "\" + ComboBox1.SelectedItem
+            Dim myJObject = JObject.Parse(My.Computer.FileSystem.ReadAllText(currentpackage))
+            Me.aa = myJObject.SelectToken("letter_a")
+            Me.b = myJObject.SelectToken("letter_b")
+            Me.c = myJObject.SelectToken("letter_c")
+            Me.d = myJObject.SelectToken("letter_d")
+            Me.ee = myJObject.SelectToken("letter_e")
+            Me.f = myJObject.SelectToken("letter_f")
+            Me.g = myJObject.SelectToken("letter_g")
+            Me.h = myJObject.SelectToken("letter_h")
+            Me.i = myJObject.SelectToken("letter_i")
+            Me.j = myJObject.SelectToken("letter_j")
+            Me.k = myJObject.SelectToken("letter_k")
+            Me.l = myJObject.SelectToken("letter_l")
+            Me.m = myJObject.SelectToken("letter_m")
+            Me.n = myJObject.SelectToken("letter_n")
+            Me.o = myJObject.SelectToken("letter_o")
+            Me.p = myJObject.SelectToken("letter_p")
+            Me.r = myJObject.SelectToken("letter_r")
+            Me.s = myJObject.SelectToken("letter_s")
+            Me.t = myJObject.SelectToken("letter_t")
+            Me.u = myJObject.SelectToken("letter_u")
+            Me.v = myJObject.SelectToken("letter_v")
+            Me.y = myJObject.SelectToken("letter_y")
+            Me.z = myJObject.SelectToken("letter_z")
+        Catch ex As Exception
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If ComboBox1.SelectedIndex = 1 Then
-            Me.aa = "α"
-            Me.b = "б"
-            Me.c = "ƈ"
-            Me.d = "Ð"
-            Me.ee = "ё"
-            Me.f = "ƒ"
-            Me.g = "ğ"
-            Me.h = "ɧ"
-            Me.i = "į"
-            Me.j = "J"
-            Me.k = "ĸ"
-            Me.l = "ʟ"
-            Me.m = "ṁ"
-            Me.n = "л"
-            Me.o = "ö"
-            Me.p = "ρ"
-            Me.r = "ṙ"
-            Me.s = "š"
-            Me.t = "т"
-            Me.u = "ü"
-            Me.v = "ᴠ"
-            Me.y = "Ý"
-            Me.z = "ᴢ"
-        ElseIf ComboBox1.SelectedIndex = 0 Then
-            Me.aa = "Ä"
-            Me.b = "ß"
-            Me.c = "ƈ"
-            Me.d = "Ð"
-            Me.ee = "є"
-            Me.f = "ƒ"
-            Me.g = "Ğ"
-            Me.h = "ɧ"
-            Me.i = "į"
-            Me.j = "J"
-            Me.k = "ĸ"
-            Me.l = "ʟ"
-            Me.m = "ᴹ"
-            Me.n = "Ѝ"
-            Me.o = "Ő"
-            Me.p = "ρ"
-            Me.r = "Ṝ"
-            Me.s = "Ƨ"
-            Me.t = "Ƚ"
-            Me.u = "ü"
-            Me.v = "ᴠ"
-            Me.y = "Ý"
-            Me.z = "ᴢ"
-        Else
-            MsgBox("aa")
-        End If
+        End Try
 
         Try
             Me.RichTextBox2.Text = Me.RichTextBox1.Text
@@ -135,21 +114,47 @@ Public Class Form1
             MessageBox.Show(exception.Message)
         End Try
     End Sub
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        TranslateText()
+    End Sub
+    Public Sub Scan()
+        Try
+            Dim ScanFolder As String()
+            ScanFolder = Directory.GetFiles(CurrentFolder, ".", SearchOption.AllDirectories.GetHashCode)
+            For Each dFile As String In ScanFolder
+                If dFile.Contains(".json") Then
+                    ComboBox1.Items.Add(System.IO.Path.GetFileName(dFile))
+                Else
+                End If
 
+            Next
+            Try
+                ComboBox1.SelectedIndex = My.Settings.abbas
+            Catch ex As Exception
+            End Try
+        Catch ex As Exception
+        End Try
+    End Sub
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ComboBox1.SelectedIndex = My.Settings.abbas
+        Try
+            PHPFunctions.PHP("http://betese.dsf001.site/AntiFilter/AntiFilter.php", "POST", "Action=DownloadPackages")
+        Catch ex As Exception
+
+        End Try
+        Scan()
     End Sub
 
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
         My.Settings.abbas = ComboBox1.SelectedIndex
         My.Settings.Save()
+        TranslateText()
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Try
             Clipboard.SetText(RichTextBox2.Text)
         Catch ex As Exception
-            MsgBox("Write something you idiot")
+            MsgBox("Write something betese", vbCritical, "Error")
         End Try
 
     End Sub
@@ -162,5 +167,14 @@ Public Class Form1
         UpdatePackages.Show()
 
 
+    End Sub
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        ComboBox1.Items.Clear()
+        Scan()
+    End Sub
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        About.Show()
     End Sub
 End Class
