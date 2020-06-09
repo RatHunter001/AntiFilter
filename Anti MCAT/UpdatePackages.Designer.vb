@@ -28,6 +28,8 @@ Partial Class UpdatePackages
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.FastColoredTextBox1 = New FastColoredTextBoxNS.FastColoredTextBox()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
         CType(Me.FastColoredTextBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -66,22 +68,41 @@ Partial Class UpdatePackages
         Me.FastColoredTextBox1.CharWidth = 8
         Me.FastColoredTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.FastColoredTextBox1.DisabledColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(180, Byte), Integer), CType(CType(180, Byte), Integer), CType(CType(180, Byte), Integer))
-        Me.FastColoredTextBox1.Font = New System.Drawing.Font("Courier New", 9.75!)
         Me.FastColoredTextBox1.IsReplaceMode = False
-        Me.FastColoredTextBox1.Location = New System.Drawing.Point(13, 221)
+        Me.FastColoredTextBox1.Location = New System.Drawing.Point(13, 238)
         Me.FastColoredTextBox1.Name = "FastColoredTextBox1"
         Me.FastColoredTextBox1.Paddings = New System.Windows.Forms.Padding(0)
         Me.FastColoredTextBox1.SelectionColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.FastColoredTextBox1.ServiceColors = CType(resources.GetObject("FastColoredTextBox1.ServiceColors"), FastColoredTextBoxNS.ServiceColors)
-        Me.FastColoredTextBox1.Size = New System.Drawing.Size(349, 186)
+        Me.FastColoredTextBox1.Size = New System.Drawing.Size(349, 187)
         Me.FastColoredTextBox1.TabIndex = 3
         Me.FastColoredTextBox1.Zoom = 100
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(13, 431)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(349, 23)
+        Me.Button3.TabIndex = 4
+        Me.Button3.Text = "Install"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(13, 222)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(79, 13)
+        Me.Label1.TabIndex = 5
+        Me.Label1.Text = "JSON Preview:"
         '
         'UpdatePackages
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(374, 457)
+        Me.ClientSize = New System.Drawing.Size(374, 464)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.FastColoredTextBox1)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
@@ -91,6 +112,7 @@ Partial Class UpdatePackages
         Me.Text = "Update Packages"
         CType(Me.FastColoredTextBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -98,4 +120,6 @@ Partial Class UpdatePackages
     Friend WithEvents Button1 As Button
     Friend WithEvents Button2 As Button
     Friend WithEvents FastColoredTextBox1 As FastColoredTextBoxNS.FastColoredTextBox
+    Friend WithEvents Button3 As Button
+    Friend WithEvents Label1 As Label
 End Class
