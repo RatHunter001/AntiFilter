@@ -34,6 +34,8 @@ Partial Class Form1
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.LinkLabel2 = New System.Windows.Forms.LinkLabel()
         Me.SuspendLayout()
         '
         'RichTextBox1
@@ -52,7 +54,7 @@ Partial Class Form1
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(282, 51)
         Me.Button1.TabIndex = 2
-        Me.Button1.Text = "TRANSLATE"
+        Me.Button1.Text = "CONVERT"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'ComboBox1
@@ -78,7 +80,7 @@ Partial Class Form1
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(528, 440)
+        Me.Label2.Location = New System.Drawing.Point(528, 429)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(70, 13)
         Me.Label2.TabIndex = 5
@@ -106,7 +108,7 @@ Partial Class Form1
         'LinkLabel1
         '
         Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.Location = New System.Drawing.Point(549, 423)
+        Me.LinkLabel1.Location = New System.Drawing.Point(549, 412)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(49, 13)
         Me.LinkLabel1.TabIndex = 8
@@ -140,11 +142,33 @@ Partial Class Form1
         Me.Button5.Text = "Credits"
         Me.Button5.UseVisualStyleBackColor = True
         '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(10, 446)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(88, 17)
+        Me.CheckBox1.TabIndex = 12
+        Me.CheckBox1.Text = "Auto Convert"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
+        'LinkLabel2
+        '
+        Me.LinkLabel2.AutoSize = True
+        Me.LinkLabel2.Location = New System.Drawing.Point(558, 446)
+        Me.LinkLabel2.Name = "LinkLabel2"
+        Me.LinkLabel2.Size = New System.Drawing.Size(40, 13)
+        Me.LinkLabel2.TabIndex = 13
+        Me.LinkLabel2.TabStop = True
+        Me.LinkLabel2.Text = "GitHub"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(610, 462)
+        Me.ClientSize = New System.Drawing.Size(610, 472)
+        Me.Controls.Add(Me.LinkLabel2)
+        Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
@@ -157,8 +181,8 @@ Partial Class Form1
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.RichTextBox1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MaximumSize = New System.Drawing.Size(626, 501)
-        Me.MinimumSize = New System.Drawing.Size(626, 501)
+        Me.MaximumSize = New System.Drawing.Size(626, 511)
+        Me.MinimumSize = New System.Drawing.Size(626, 511)
         Me.Name = "Form1"
         Me.Text = "AntiFilter"
         Me.ResumeLayout(False)
@@ -177,4 +201,6 @@ Partial Class Form1
     Friend WithEvents Button3 As Button
     Friend WithEvents Button4 As Button
     Friend WithEvents Button5 As Button
+    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents LinkLabel2 As LinkLabel
 End Class

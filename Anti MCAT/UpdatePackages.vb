@@ -5,12 +5,12 @@ Imports System.Text
 Public Class UpdatePackages
     Dim CurrentFolder = System.IO.Path.GetDirectoryName(Application.ExecutablePath)
     Dim selectedpackage
-    Private Sub UpdatePackages_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+    Private Sub RefreshPackages()
         Dim FileCount As Integer = Integer.Parse(PHPFunctions.PHP("http://betese.dsf001.site/AntiFilter/AntiFilter.php", "POST", "Action=CountFiles"))
         Dim AllPackages As String = (PHPFunctions.PHP("http://betese.dsf001.site/AntiFilter/AntiFilter.php", "POST", "Action=DownloadPackages"))
         Dim AllPackagesList As New List(Of String)
         Dim myJObject = JObject.Parse(AllPackages)
+        ListBox1.Items.Clear()
         For x As Integer = 0 To (FileCount + 10)
             Try
                 AllPackagesList.Add(myJObject.SelectToken(x.ToString()))
@@ -18,6 +18,9 @@ Public Class UpdatePackages
             Catch ex As Exception
             End Try
         Next
+    End Sub
+    Private Sub UpdatePackages_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        RefreshPackages()
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -59,5 +62,18 @@ Public Class UpdatePackages
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         Button3.Text = "Install"
         Timer1.Stop()
+    End Sub
+
+    Private Sub UpdatePackages_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        Form1.Show()
+        'Me.Close()
+    End Sub
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        Me.Close()
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        RefreshPackages()
     End Sub
 End Class

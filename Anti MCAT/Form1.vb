@@ -29,7 +29,9 @@ Public Class Form1
     Private z As String
 
     Private Sub RichTextBox1_TextChanged(sender As Object, e As EventArgs) Handles RichTextBox1.TextChanged
-
+        If My.Settings.AutoConvert = True Then
+            TranslateText()
+        End If
     End Sub
     Private Sub TranslateText()
         Try
@@ -63,6 +65,7 @@ Public Class Form1
         End Try
 
         Try
+            'didn't use lowercase because I'm retarded
             Me.RichTextBox2.Text = Me.RichTextBox1.Text
             Me.RichTextBox2.Text = Me.RichTextBox2.Text.Replace("A", Me.aa)
             Me.RichTextBox2.Text = Me.RichTextBox2.Text.Replace("a", Me.aa)
@@ -136,8 +139,24 @@ Public Class Form1
         End Try
     End Sub
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         Try
-            PHPFunctions.PHP("http://betese.dsf001.site/AntiFilter/AntiFilter.php", "POST", "Action=DownloadPackages")
+            CheckBox1.Checked = My.Settings.AutoConvert
+        Catch ex As Exception
+        End Try
+        Try
+            If My.Settings.Version = PHPFunctions.PHP("http://betese.dsf001.site/AntiFilter/about.php", "POST", "Action=GetVersion") Then
+                Me.Text = "AntiFilter by dsf001 | Version : " + My.Settings.Version
+            Else
+                Me.Text = "AntiFilter by dsf001 | Version : " + My.Settings.Version + " (OUTDATED)"
+                Dim ask As MsgBoxResult = MsgBox("A new version is released at our GitHub page. Would you like to download the new version?", vbInformation + MsgBoxStyle.YesNo, "betse")
+                If ask = MsgBoxResult.Yes Then
+                    Process.Start("https://github.com/RatHunter001/AntiFilter")
+                    End
+                Else
+
+                End If
+            End If
         Catch ex As Exception
 
         End Try
@@ -154,7 +173,7 @@ Public Class Form1
         Try
             Clipboard.SetText(RichTextBox2.Text)
         Catch ex As Exception
-            MsgBox("Write something betese", vbCritical, "Error")
+            MsgBox("Write something", vbCritical, "Error")
         End Try
 
     End Sub
@@ -164,6 +183,7 @@ Public Class Form1
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Me.Hide()
         UpdatePackages.Show()
 
 
@@ -176,5 +196,20 @@ Public Class Form1
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         About.Show()
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
+        If CheckBox1.Checked = True Then
+            My.Settings.AutoConvert = True
+            My.Settings.Save()
+        ElseIf CheckBox1.Checked = False Then
+            My.Settings.AutoConvert = False
+            My.Settings.Save()
+        Else
+        End If
+    End Sub
+
+    Private Sub LinkLabel2_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel2.LinkClicked
+        Process.Start("https://github.com/RatHunter001/AntiFilter")
     End Sub
 End Class

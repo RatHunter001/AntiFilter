@@ -49,7 +49,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Script Hub Reloaded.ico</ApplicationIcon>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FastColoredTextBox">
@@ -152,6 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="diamond_hoe_JZq_icon.ico" />
+    <Content Include="logo.ico" />
     <Content Include="Script Hub Reloaded.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
